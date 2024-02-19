@@ -2,6 +2,8 @@
 using SmtpServer;
 using SmtpServer.Protocol;
 using SmtpServer.Storage;
+using Spamma.Api.Web.Infrastructure.Contracts;
+using Spamma.Api.Web.Infrastructure.Contracts.MessageHandling;
 
 namespace Spamma.Api.Web.Infrastructure.MessageHandling
 {
@@ -21,7 +23,16 @@ namespace Spamma.Api.Web.Infrastructure.MessageHandling
                 stream.Write(memory.Span);
             }
 
-            return new SmtpResponse(SmtpReplyCode.Ok);
+            stream.Position = 0;
+
+            var message = await MimeKit.MimeMessage.LoadAsync(stream, cancellationToken);
+
+            var messageStoreProvider = context.ServiceProvider.GetRequiredService<IMessageStoreProvider>();
+            var result = await messageStoreProvider.StoreMessageContentAsync(Guid.NewGuid(), message, cancellationToken);
+
+            return result.IsSuccess
+                ? SmtpResponse.Ok
+                : SmtpResponse.TransactionFailed;
         }
     }
 }

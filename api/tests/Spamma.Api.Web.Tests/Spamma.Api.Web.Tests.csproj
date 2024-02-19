@@ -38,6 +38,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\shared\Spamma.Tests.Shared\Spamma.Tests.Shared.csproj" />
       <ProjectReference Include="..\..\source\Spamma.Api.Web\Spamma.Api.Web.csproj" />
     </ItemGroup>
 

@@ -12,6 +12,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="MimeKit" Version="4.3.0" />
+        <PackageReference Include="ResultMonad" Version="1.0.1" />
         <PackageReference Include="SmtpServer" Version="10.0.1" />
         <PackageReference Include="SonarAnalyzer.CSharp" Version="9.19.0.84025">
           <PrivateAssets>all</PrivateAssets>

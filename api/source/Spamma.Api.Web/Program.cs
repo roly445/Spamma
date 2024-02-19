@@ -1,5 +1,8 @@
 using SmtpServer;
 using SmtpServer.Storage;
+using Spamma.Api.Web.Infrastructure.Contracts;
+using Spamma.Api.Web.Infrastructure.Contracts.MessageHandling;
+using Spamma.Api.Web.Infrastructure.Contracts.SutWrappers;
 using Spamma.Api.Web.Infrastructure.MessageHandling;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +23,8 @@ builder.Services.AddSingleton(
         return new SmtpServer.SmtpServer(options, provider.GetRequiredService<IServiceProvider>());
     });
 builder.Services.AddHostedService<SmtpHostedService>();
+builder.Services.AddSingleton<IMessageStoreProvider, LocalMessageStoreProvider>();
+builder.Services.AddSingleton<IDirectoryWrapper, DirectoryWrapper>();
 
 var app = builder.Build();
 app.UseHttpsRedirection();
