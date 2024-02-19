@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{F9F67DE2-95B6-41E0-B551-1246E77B4811}"
+	ProjectSection(SolutionItems) = preProject
+		api\Spamma.Api.slnf = api\Spamma.Api.slnf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{E17A5D04-6D0F-4479-A07A-17D9D43DE003}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7C343FFB-7754-4D75-A050-C6D2B40C2DF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spamma.Api.Web.Tests", "api\tests\Spamma.Api.Web.Tests\Spamma.Api.Web.Tests.csproj", "{87074A1A-2BF5-4975-8FE7-7D72EC3C1BEB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spamma.Api.Web", "api\source\Spamma.Api.Web\Spamma.Api.Web.csproj", "{F01682EA-E9EE-419E-81A5-EBA921361DD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{809FFB93-2DE1-4ED0-AEAA-AD16AB5A1D2C}"
+	ProjectSection(SolutionItems) = preProject
+		api\.build\build.ps1 = api\.build\build.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{616D24FD-8BB3-421A-A81B-93734C83B9FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spamma.Tests.Shared", "shared\Spamma.Tests.Shared\Spamma.Tests.Shared.csproj", "{A1E91E8B-D0DB-4B89-9EEE-314699298845}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Spamma.Shared", "shared\Spamma.Shared\Spamma.Shared.shproj", "{32A2AD16-4150-40BB-BD6F-58695BAC45E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test-harnesses", "test-harnesses", "{8418220B-765B-47F3-9C34-981B699FD2E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spamma.TestHarnesses.EmailSender", "test-harnesses\Spamma.TestHarnesses.EmailSender\Spamma.TestHarnesses.EmailSender.csproj", "{FC65B836-B4D0-4E8C-8E99-10F92D464B7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{55B97A72-B084-4127-BD26-ACEB8298A102}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{660AE609-5141-4DEB-8A64-D54C6CED3307}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "._", "._", "{8FEBA10B-5A60-4A73-A5D2-5622CDA25B1E}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87074A1A-2BF5-4975-8FE7-7D72EC3C1BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87074A1A-2BF5-4975-8FE7-7D72EC3C1BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87074A1A-2BF5-4975-8FE7-7D72EC3C1BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87074A1A-2BF5-4975-8FE7-7D72EC3C1BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F01682EA-E9EE-419E-81A5-EBA921361DD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F01682EA-E9EE-419E-81A5-EBA921361DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F01682EA-E9EE-419E-81A5-EBA921361DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F01682EA-E9EE-419E-81A5-EBA921361DD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1E91E8B-D0DB-4B89-9EEE-314699298845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E91E8B-D0DB-4B89-9EEE-314699298845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E91E8B-D0DB-4B89-9EEE-314699298845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E91E8B-D0DB-4B89-9EEE-314699298845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC65B836-B4D0-4E8C-8E99-10F92D464B7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC65B836-B4D0-4E8C-8E99-10F92D464B7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC65B836-B4D0-4E8C-8E99-10F92D464B7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC65B836-B4D0-4E8C-8E99-10F92D464B7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E17A5D04-6D0F-4479-A07A-17D9D43DE003} = {F9F67DE2-95B6-41E0-B551-1246E77B4811}
+		{7C343FFB-7754-4D75-A050-C6D2B40C2DF4} = {F9F67DE2-95B6-41E0-B551-1246E77B4811}
+		{87074A1A-2BF5-4975-8FE7-7D72EC3C1BEB} = {7C343FFB-7754-4D75-A050-C6D2B40C2DF4}
+		{F01682EA-E9EE-419E-81A5-EBA921361DD3} = {E17A5D04-6D0F-4479-A07A-17D9D43DE003}
+		{809FFB93-2DE1-4ED0-AEAA-AD16AB5A1D2C} = {F9F67DE2-95B6-41E0-B551-1246E77B4811}
+		{A1E91E8B-D0DB-4B89-9EEE-314699298845} = {616D24FD-8BB3-421A-A81B-93734C83B9FF}
+		{32A2AD16-4150-40BB-BD6F-58695BAC45E6} = {616D24FD-8BB3-421A-A81B-93734C83B9FF}
+		{FC65B836-B4D0-4E8C-8E99-10F92D464B7B} = {8418220B-765B-47F3-9C34-981B699FD2E6}
+		{660AE609-5141-4DEB-8A64-D54C6CED3307} = {55B97A72-B084-4127-BD26-ACEB8298A102}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		shared\Spamma.Shared\Spamma.Shared.projitems*{32a2ad16-4150-40bb-bd6f-58695bac45e6}*SharedItemsImports = 13
+		shared\Spamma.Shared\Spamma.Shared.projitems*{87074a1a-2bf5-4975-8fe7-7d72ec3c1beb}*SharedItemsImports = 5
+		shared\Spamma.Shared\Spamma.Shared.projitems*{a1e91e8b-d0db-4b89-9eee-314699298845}*SharedItemsImports = 5
+		shared\Spamma.Shared\Spamma.Shared.projitems*{f01682ea-e9ee-419e-81a5-eba921361dd3}*SharedItemsImports = 5
+		shared\Spamma.Shared\Spamma.Shared.projitems*{fc65b836-b4d0-4e8c-8e99-10f92d464b7b}*SharedItemsImports = 5
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,11 @@
+{
+  "solution": {
+    "path": "..\\Spamma.sln",
+    "projects": [
+      "api\\source\\Spamma.Api.Web\\Spamma.Api.Web.csproj",
+      "api\\tests\\Spamma.Api.Web.Tests\\Spamma.Api.Web.Tests.csproj",
+      "shared\\Spamma.Shared\\Spamma.Shared.shproj",
+      "shared\\Spamma.Tests.Shared\\Spamma.Tests.Shared.csproj"
+    ]
+  }
+}
