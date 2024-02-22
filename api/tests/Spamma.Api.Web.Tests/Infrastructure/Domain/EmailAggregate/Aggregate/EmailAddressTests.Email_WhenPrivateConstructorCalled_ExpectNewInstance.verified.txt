@@ -1,0 +1,8 @@
+﻿{
+  emailAddress: {
+    Address: address,
+    Name: name,
+    Id: Guid_1
+  },
+  ListCheck: []
+}

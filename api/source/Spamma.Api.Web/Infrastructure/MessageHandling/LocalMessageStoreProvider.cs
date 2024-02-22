@@ -10,14 +10,16 @@ namespace Spamma.Api.Web.Infrastructure.MessageHandling
         private readonly IHostEnvironment _hostEnvironment;
         private readonly ILogger<LocalMessageStoreProvider> _logger;
         private readonly IDirectoryWrapper _directoryWrapper;
+        private readonly IFileWrapper _fileWrapper;
 
         public LocalMessageStoreProvider(
             IHostEnvironment hostEnvironment, ILogger<LocalMessageStoreProvider> logger,
-            IDirectoryWrapper directoryWrapper)
+            IDirectoryWrapper directoryWrapper, IFileWrapper fileWrapper)
         {
             this._hostEnvironment = hostEnvironment;
             this._logger = logger;
             this._directoryWrapper = directoryWrapper;
+            this._fileWrapper = fileWrapper;
         }
 
         public async ValueTask<Result> StoreMessageContentAsync(Guid messageId, MimeMessage messageContent, CancellationToken cancellationToken = default)
@@ -44,6 +46,18 @@ namespace Spamma.Api.Web.Infrastructure.MessageHandling
 
             await messageContent.WriteToAsync(Path.Combine(path, $"{messageId}.eml"), cancellationToken);
             return Result.Ok();
+        }
+
+        public ValueTask<Result> DeleteMessageContentAsync(Guid messageId, CancellationToken cancellationToken = default)
+        {
+            var path = Path.Combine(this._hostEnvironment.ContentRootPath, "messages");
+            if (!this._directoryWrapper.Exists(path))
+            {
+                return new ValueTask<Result>(Result.Fail());
+            }
+
+            this._fileWrapper.Delete(Path.Combine(path, $"{messageId}.eml"));
+            return new ValueTask<Result>(Result.Ok());
         }
     }
 }

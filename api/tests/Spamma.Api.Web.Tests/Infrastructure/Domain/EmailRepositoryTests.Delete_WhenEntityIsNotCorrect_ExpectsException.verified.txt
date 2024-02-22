@@ -1,0 +1,5 @@
+﻿{
+  Type: ArgumentException,
+  Message: Entity not of correct type (Parameter 'aggregate'),
+  ParamName: aggregate
+}

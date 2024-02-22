@@ -1,0 +1,15 @@
+﻿{
+  Status: Succeeded,
+  email: {
+    Subject: Test,
+    SentDate: DateTime_1,
+    EmailAddresses: [
+      {
+        Address: address,
+        Name: name,
+        Id: Guid_1
+      }
+    ],
+    Id: Guid_2
+  }
+}

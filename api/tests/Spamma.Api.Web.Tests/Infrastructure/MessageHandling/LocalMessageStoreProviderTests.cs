@@ -12,6 +12,7 @@ namespace Spamma.Api.Web.Tests.Infrastructure.MessageHandling
         private readonly MimeMessage _message = new();
         private readonly Mock<IHostEnvironment> _hostEnvironment = new();
         private readonly Mock<IDirectoryWrapper> _directoryWrapper = new();
+        private readonly Mock<IFileWrapper> _fileWrapper = new();
         private readonly Mock<ILogger<LocalMessageStoreProvider>> _logger = new();
         private readonly string _testPath = Path.Combine(Path.GetTempPath(), $"spamma");
 
@@ -28,7 +29,7 @@ namespace Spamma.Api.Web.Tests.Infrastructure.MessageHandling
             this._directoryWrapper.Setup(x => x.Exists(It.IsAny<string>())).Returns(true);
 
             var messageStoreProvider = new LocalMessageStoreProvider(
-                this._hostEnvironment.Object, this._logger.Object, this._directoryWrapper.Object);
+                this._hostEnvironment.Object, this._logger.Object, this._directoryWrapper.Object, this._fileWrapper.Object);
 
             // Act
             var result = await messageStoreProvider.StoreMessageContentAsync(
@@ -59,7 +60,7 @@ namespace Spamma.Api.Web.Tests.Infrastructure.MessageHandling
                 .Callback((string p) => Directory.CreateDirectory(p));
 
             var messageStoreProvider = new LocalMessageStoreProvider(
-                this._hostEnvironment.Object, this._logger.Object, this._directoryWrapper.Object);
+                this._hostEnvironment.Object, this._logger.Object, this._directoryWrapper.Object, this._fileWrapper.Object);
 
             // Act
             var result = await messageStoreProvider.StoreMessageContentAsync(
@@ -88,7 +89,7 @@ namespace Spamma.Api.Web.Tests.Infrastructure.MessageHandling
                 .Throws<UnauthorizedAccessException>();
 
             var messageStoreProvider = new LocalMessageStoreProvider(
-                this._hostEnvironment.Object, this._logger.Object, this._directoryWrapper.Object);
+                this._hostEnvironment.Object, this._logger.Object, this._directoryWrapper.Object, this._fileWrapper.Object);
 
             // Act
             var result = await messageStoreProvider.StoreMessageContentAsync(
@@ -110,7 +111,7 @@ namespace Spamma.Api.Web.Tests.Infrastructure.MessageHandling
                 .Throws<PathTooLongException>();
 
             var messageStoreProvider = new LocalMessageStoreProvider(
-                this._hostEnvironment.Object, this._logger.Object, this._directoryWrapper.Object);
+                this._hostEnvironment.Object, this._logger.Object, this._directoryWrapper.Object, this._fileWrapper.Object);
 
             // Act
             var result = await messageStoreProvider.StoreMessageContentAsync(
@@ -132,7 +133,7 @@ namespace Spamma.Api.Web.Tests.Infrastructure.MessageHandling
                 .Throws<DirectoryNotFoundException>();
 
             var messageStoreProvider = new LocalMessageStoreProvider(
-                this._hostEnvironment.Object, this._logger.Object, this._directoryWrapper.Object);
+                this._hostEnvironment.Object, this._logger.Object, this._directoryWrapper.Object, this._fileWrapper.Object);
 
             // Act
             var result = await messageStoreProvider.StoreMessageContentAsync(
@@ -140,6 +141,56 @@ namespace Spamma.Api.Web.Tests.Infrastructure.MessageHandling
 
             // Assert
             await Verify(result.IsFailure);
+        }
+
+        [Fact]
+        public async Task DeleteMessageContentAsync_WhenDirectoryDoesntExist_ExpectFailedResult()
+        {
+            // Arrange
+            var testPath = Path.Combine(this._testPath, $"test{Guid.NewGuid()}");
+            this._hostEnvironment.Setup(e => e.ContentRootPath)
+                .Returns(testPath);
+
+            this._directoryWrapper.Setup(x => x.Exists(It.IsAny<string>())).Returns(false);
+
+            var messageStoreProvider = new LocalMessageStoreProvider(
+                this._hostEnvironment.Object, this._logger.Object, this._directoryWrapper.Object, this._fileWrapper.Object);
+
+            // Act
+            var result = await messageStoreProvider.DeleteMessageContentAsync(
+                Guid.NewGuid(), CancellationToken.None);
+
+            // Assert
+            await Verify(new
+            {
+                IsSuccessful = result.IsSuccess,
+            });
+        }
+
+        [Fact]
+        public async Task DeleteMessageContentAsync_WhenDirectoryExists_ExpectFileDeletedAndOkResult()
+        {
+            // Arrange
+            var testPath = Path.Combine(this._testPath, $"test{Guid.NewGuid()}");
+            this._hostEnvironment.Setup(e => e.ContentRootPath)
+                .Returns(testPath);
+
+            this._directoryWrapper.Setup(x => x.Exists(It.IsAny<string>())).Returns(true);
+            this._fileWrapper.Setup(x => x.Delete(It.IsAny<string>()));
+
+            var messageStoreProvider = new LocalMessageStoreProvider(
+                this._hostEnvironment.Object, this._logger.Object, this._directoryWrapper.Object, this._fileWrapper.Object);
+
+            // Act
+            var result = await messageStoreProvider.DeleteMessageContentAsync(
+                Guid.NewGuid(), CancellationToken.None);
+
+            // Assert
+            this._fileWrapper.Verify(x => x.Delete(It.IsAny<string>()), Times.Once);
+            await Verify(new
+            {
+                IsSuccessful = result.IsSuccess,
+            });
         }
     }
 }

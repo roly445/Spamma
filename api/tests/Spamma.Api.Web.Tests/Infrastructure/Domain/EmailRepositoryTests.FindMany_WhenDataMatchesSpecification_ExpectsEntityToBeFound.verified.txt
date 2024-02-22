@@ -1,0 +1,26 @@
+﻿[
+  {
+    Subject: Test 2,
+    SentDate: DateTime_1,
+    EmailAddresses: [
+      {
+        Address: address 2,
+        Name: name 2,
+        Id: Guid_1
+      }
+    ],
+    Id: Guid_2
+  },
+  {
+    Subject: Test 2,
+    SentDate: DateTime_2,
+    EmailAddresses: [
+      {
+        Address: address 2,
+        Name: name 2,
+        Id: Guid_3
+      }
+    ],
+    Id: Guid_4
+  }
+]

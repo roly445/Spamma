@@ -1,0 +1,71 @@
+﻿[
+  {
+    Entity: {
+      Subject: Test,
+      SentDate: DateTime_1,
+      EmailAddresses: [
+        {
+          Address: address,
+          Name: name,
+          Id: Guid_1
+        }
+      ],
+      Id: Guid_2
+    },
+    State: Added
+  },
+  {
+    Entity: {
+      Address: address,
+      Name: name,
+      Id: Guid_1
+    },
+    State: Added
+  },
+  {
+    Entity: {
+      Subject: Test,
+      SentDate: DateTime_2,
+      EmailAddresses: [
+        {
+          Address: address,
+          Name: name,
+          Id: Guid_3
+        }
+      ],
+      Id: Guid_4
+    },
+    State: Modified
+  },
+  {
+    Entity: {
+      Address: address,
+      Name: name,
+      Id: Guid_3
+    },
+    State: Modified
+  },
+  {
+    Entity: {
+      Subject: Test,
+      SentDate: DateTime_3,
+      EmailAddresses: [
+        {
+          Address: address,
+          Name: name,
+          Id: Guid_5
+        }
+      ],
+      Id: Guid_6
+    },
+    State: Deleted
+  },
+  {
+    Entity: {
+      Address: address,
+      Name: name,
+      Id: Guid_5
+    },
+    State: Deleted
+  }
+]

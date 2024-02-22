@@ -25,6 +25,10 @@
       </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\api\source\Spamma.Api.Web\Spamma.Api.Web.csproj" />
+    </ItemGroup>
+
     <Import Project="..\Spamma.Shared\Spamma.Shared.projitems" Label="Shared" />
 
 </Project>

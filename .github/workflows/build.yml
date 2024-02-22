@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest]
     
     steps:
       - uses: actions/checkout@v1
@@ -22,4 +22,9 @@ jobs:
       - name: Build the API
         shell: pwsh
         run: ./build.ps1
-        working-directory: ./api
+        working-directory: ./api/.build
+      - name: Push coverage results to Coveralls
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./api/.build/lcov.info

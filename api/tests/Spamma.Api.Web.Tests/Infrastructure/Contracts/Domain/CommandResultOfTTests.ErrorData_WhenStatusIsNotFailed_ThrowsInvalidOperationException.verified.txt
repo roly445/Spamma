@@ -1,0 +1,1 @@
+﻿ErrorData is only available when the status is Failed

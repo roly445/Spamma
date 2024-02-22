@@ -1,0 +1,25 @@
+﻿[
+  {
+    Entity: {
+      Subject: Test,
+      SentDate: DateTime_1,
+      EmailAddresses: [
+        {
+          Address: address,
+          Name: name,
+          Id: Guid_1
+        }
+      ],
+      Id: Guid_2
+    },
+    State: Deleted
+  },
+  {
+    Entity: {
+      Address: address,
+      Name: name,
+      Id: Guid_1
+    },
+    State: Deleted
+  }
+]

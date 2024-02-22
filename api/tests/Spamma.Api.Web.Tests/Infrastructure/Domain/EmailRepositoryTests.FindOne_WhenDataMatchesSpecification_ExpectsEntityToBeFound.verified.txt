@@ -1,0 +1,15 @@
+﻿{
+  HasValue: true,
+  Value: {
+    Subject: Test 1,
+    SentDate: DateTime_1,
+    EmailAddresses: [
+      {
+        Address: address 1,
+        Name: name 1,
+        Id: Guid_1
+      }
+    ],
+    Id: Guid_2
+  }
+}

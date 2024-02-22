@@ -1,0 +1,6 @@
+﻿{
+  Data: {
+    Foo: bar
+  },
+  Status: Succeeded
+}
